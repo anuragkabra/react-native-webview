@@ -825,6 +825,11 @@ static NSURLCredential* clientAuthenticationCredential;
   [self setBackgroundColor: _savedBackgroundColor];
 }
 
+-(void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
+    //reloading this webview again on terminate to avoid showing empty webview
+    [webView reload];
+}
+
 - (void)evaluateJS:(NSString *)js
           thenCall: (void (^)(NSString*)) callback
 {
